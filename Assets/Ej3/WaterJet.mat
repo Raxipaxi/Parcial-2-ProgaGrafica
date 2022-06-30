@@ -24,10 +24,11 @@ Material:
     - _EdgeLength: 36.4
     - _FallOff: 0.26
     - _Float0: 1.01
-    - _Intensity: 0.4
-    - _NoiseScale: 1
+    - _Freq: 2.5
+    - _Intensity: 0.15
+    - _NoiseScale: 4
     - _OffSet: -1
-    - _Speed: 3
+    - _Speed: 6
     - _TessValue: 32
     - __dirty: 0
     m_Colors: []

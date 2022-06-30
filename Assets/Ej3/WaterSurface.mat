@@ -20,11 +20,12 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _Amplitude: 0.0086
+    - _20: -13.6
+    - _Amplitude: 0.0113
     - _DarkColor: 0.8
     - _EdgeLength: 15
-    - _Frequency: 45
-    - _Speed: -0.3
+    - _Frequency: 2
+    - _Speed: -10
     - _TessValue: 32
     - __dirty: 0
     m_Colors: []
