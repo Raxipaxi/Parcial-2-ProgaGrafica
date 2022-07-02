@@ -21,7 +21,7 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - _Deepness: 4
-    - _Float0: 6
+    - _Float0: 7.32
     - _Float1: -1.09
     - _Foam: 0.7674716
     - __dirty: 0

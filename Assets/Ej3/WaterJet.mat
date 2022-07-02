@@ -25,7 +25,7 @@ Material:
     - _FallOff: 0.26
     - _Float0: 1.01
     - _Freq: 2.5
-    - _Intensity: 0.15
+    - _Intensity: 0.34
     - _NoiseScale: 4
     - _OffSet: -1
     - _Speed: 6

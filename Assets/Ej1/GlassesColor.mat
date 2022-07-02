@@ -24,7 +24,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _Cutoff: 0.5
     - _Float0: 21.2
+    - _Float1: 0
+    - _Opacidad: 0.7747322
+    - _Opacidad1: 0.53778917
     - __dirty: 0
     m_Colors: []
   m_BuildTextureStacks: []

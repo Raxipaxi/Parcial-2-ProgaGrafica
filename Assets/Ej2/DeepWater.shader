@@ -5,6 +5,7 @@ Shader "DeepWater"
 	Properties
 	{
 		_Foam("Foam", Range( 0 , 1)) = 0.01401001
+		_Float0("Float 0", Float) = 6
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
 
@@ -24,6 +25,7 @@ Shader "DeepWater"
 		UNITY_DECLARE_DEPTH_TEXTURE( _CameraDepthTexture );
 		uniform float4 _CameraDepthTexture_TexelSize;
 		uniform float _Foam;
+		uniform float _Float0;
 
 		void surf( Input i , inout SurfaceOutputStandard o )
 		{
@@ -33,9 +35,9 @@ Shader "DeepWater"
 			float screenDepth44 = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE( _CameraDepthTexture, ase_screenPosNorm.xy ));
 			float distanceDepth44 = saturate( abs( ( screenDepth44 - LinearEyeDepth( ase_screenPosNorm.z ) ) / ( ( 1.0 - _Foam ) ) ) );
 			float4 color5 = IsGammaSpace() ? float4(1,1,1,0) : float4(1,1,1,0);
-			float4 color1 = IsGammaSpace() ? float4(0.2342916,0.6132076,0.5962049,0) : float4(0.04481259,0.3341808,0.3141351,0);
+			float4 color1 = IsGammaSpace() ? float4(0.2220363,0.7264151,0.640173,0) : float4(0.04039077,0.4865309,0.3674659,0);
 			float screenDepth2 = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE( _CameraDepthTexture, ase_screenPosNorm.xy ));
-			float distanceDepth2 = saturate( abs( ( screenDepth2 - LinearEyeDepth( ase_screenPosNorm.z ) ) / ( 6.0 ) ) );
+			float distanceDepth2 = saturate( abs( ( screenDepth2 - LinearEyeDepth( ase_screenPosNorm.z ) ) / ( _Float0 ) ) );
 			float4 lerpResult17 = lerp( color5 , color1 , ( distanceDepth44 + ( 1.0 - distanceDepth2 ) ));
 			o.Albedo = saturate( ( ceil( ( 1.0 - distanceDepth44 ) ) + saturate( lerpResult17 ) ) ).rgb;
 			o.Alpha = 1;
@@ -48,9 +50,9 @@ Shader "DeepWater"
 }
 /*ASEBEGIN
 Version=17200
-0;555;1559;436;1880.5;208.6458;1.385535;True;True
+0;452;1247;323.6;2568.745;106.0024;1.552448;True;False
 Node;AmplifyShaderEditor.CommentaryNode;54;-2042.682,-425.216;Inherit;False;807.571;206.5091;Foam;3;8;44;16;;1,1,1,1;0;0
-Node;AmplifyShaderEditor.RangedFloatNode;3;-1729.594,254.8338;Inherit;False;Constant;_Float0;Float 0;0;0;Create;True;0;0;False;0;6;6.6;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;3;-1729.594,254.8338;Inherit;False;Property;_Float0;Float 0;1;0;Create;True;0;0;False;0;6;6;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;8;-2015.957,-342.1707;Inherit;False;Property;_Foam;Foam;0;0;Create;True;0;0;False;0;0.01401001;0.7674716;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.DepthFade;2;-1531.606,236.0954;Inherit;False;True;True;True;2;1;FLOAT3;0,0,0;False;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.OneMinusNode;16;-1698.811,-335.0054;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
@@ -58,9 +60,9 @@ Node;AmplifyShaderEditor.OneMinusNode;64;-1248.293,236.535;Inherit;False;1;0;FLO
 Node;AmplifyShaderEditor.DepthFade;44;-1510.036,-357.7958;Inherit;False;True;True;True;2;1;FLOAT3;0,0,0;False;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;52;-1067.983,210.3798;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.CommentaryNode;65;-1075.979,-256.5936;Inherit;False;287;438.3848;Colores;2;1;5;;1,1,1,1;0;0
-Node;AmplifyShaderEditor.WireNode;69;-756.57,201.7863;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.ColorNode;1;-1025.978,-30.20864;Inherit;False;Constant;_Color0;Color 0;0;0;Create;True;0;0;False;0;0.2342916,0.6132076,0.5962049,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;1;-1025.978,-30.20864;Inherit;False;Constant;_Color0;Color 0;0;0;Create;True;0;0;False;0;0.2220363,0.7264151,0.640173,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ColorNode;5;-1023.262,-206.5934;Inherit;False;Constant;_Color1;Color 1;1;0;Create;True;0;0;False;0;1,1,1,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.WireNode;69;-756.57,201.7863;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.LerpOp;17;-599.9376,-113.8961;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.OneMinusNode;55;-955.7658,-343.3448;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SaturateNode;68;-379.9551,-112.263;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0
@@ -86,4 +88,4 @@ WireConnection;56;1;68;0
 WireConnection;18;0;56;0
 WireConnection;0;0;18;0
 ASEEND*/
-//CHKSM=1D6DB0BC4363ADC763F9A9AD617E60358A6ADE16
+//CHKSM=A89D47516E14296DD6FF3A7C3A278E78E467AC71
